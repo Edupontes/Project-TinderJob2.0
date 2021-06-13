@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../static/CSS/style.css"/>
+    <script type="text/javascript" src="../static/JS/actions.js"/> -->
+    <title>Editar tela</title>
+</head>
+<body>
+    <div>
+        <h1>Editar</h1>
+        <hr>
+        <h2>Editar Cadastro</h2>
+
+        <form th:action = "@{/SalvarCadastro}" method = "POST" th:object = "${DadosPessoais}">
+            
+            <input type="hidden" th:field="*{id}">
+            
+            <input type="text" th:field = "*{firstName}"  >
+
+            <input type="text" th:field = "*{lastName}"  >
+
+            <input type="text" th:field = "*{telefone1}"  >
+
+            <input type="text" th:field = "*{telefone2}"  >
+
+            <input type="text" th:field = "*{email}"  >
+
+            <input type="date" th:field = "*{dataNascimento}"  >
+
+            <input type="text" th:field = "*{genero}"  >
+
+            <input type="text" th:field = "*{tipoServico}"  >
+
+            <button type="submit">Editar Cadastro</button>
+        </form>
+    </div>
+</body>
+</html>

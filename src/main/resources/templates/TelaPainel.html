@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/CSS/style2.css" />
+    <title>Cadastro</title>
+</head>
+
+<body class="gradient">
+    <div class="container">
+        <div title="Cadastre um Serviço">
+            <h2 class="text">Cadastre um Serviço</h2>
+            <table class="dadospessoais" title="Dados Pessoais" cellspacing="1">
+                <tr colspan=3>
+                    <td>
+                        <label for="Tipo">Tipo de Serviço: </label>
+                        <input type="text" list="tipo" id="Tipo" name="Tipo" placeholder="Qual o tipo do Serviço">
+                        <datalist id="tipo">
+                            <option value="Pedreiro">
+                            <option value="Encanador">
+                            <option value="Eletricista">
+                            <option value="Mecanico">
+                            <option value="Pintor">
+                            <option value="Gesseiro">
+                        </datalist>
+                    </td>
+                    <td>
+                 
+                        <label for="forma">Forma de Cobrança: </label>
+                        <input type="text" list="Forma" id="forma" placeholder="Forma de Cobrança" />
+                        <datalist id="Forma">
+                            <option value="Serviço">
+                            <option value="Hora">
+                            <option value="Diaria">
+                        </datalist>
+                    </td>
+                    <td>
+                        <label for="Recebimento">Forma de Receber</label><br/>
+                    <input type="text" list="Recebimento" id="recebimento" name="Recebimento" placeholder="Escolha a forma de recebimento">
+                    <datalist id="Recebimento">
+                        <option value="Cartão de Crédito/Débito">
+                        <option value="Dinheiro">
+                        <option value="Pix">
+                        <option value="Transferência Bancária">
+                    </datalist>                        
+                    </td>
+                </tr>
+                
+            </table>
+            <div class="center">
+                <button>SALVAR</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

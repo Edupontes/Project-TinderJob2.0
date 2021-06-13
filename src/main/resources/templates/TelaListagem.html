@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" th:href="@{CSS/style.css}"/-->
+    <!--script type="text/javascript" th:src="@{JS/actions.js}"/-->
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Listagem</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone 1</th>
+                    <th>Telefone 2</th>
+                    <th>Email</th>
+                    <th>Tipo de serviço</th>
+                    <th>Alterar informações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="dadospessoais : ${dados_pessoais}">
+                    <td th:text = "${dadospessoais.firstName +' '+ dadospessoais.LastName}"></td>
+                    <td th:text = "${dadospessoais.telefone1}"></td>
+                    <td th:text = "${dadospessoais.telefone2}"></td>
+                    <td th:text = "${dadospessoais.email}"></td>
+                    <td th:text = "${dadospessoais.tipoServico}"></td>
+                    <td>
+                        <a th:href="@{/EditarCadastro/{id}(id=${dadospessoais.id})}">EDITAR</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/DeletarCadastro/{id}(id=${dadospessoais.id})}">Remover</a>
+                    </td>
+                   
+                    <!-- <td> <a th:href = "@{/Listagem"></a> </td> -->
+                </tr>
+            </tbody>
+        </table>
+        <!-- Criar metodo para essas chamadas -->
+        <button>
+            <a th:href="@{/}">
+                Sair 
+            </a>
+        </button>
+    </div>
+</body>
+</html>

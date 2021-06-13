@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" th:href="@{CSS/style.css}"/-->
+    <!--script type="text/javascript" th:src="@{JS/actions.js}"/-->
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Cadastro</h1>
+        <hr>
+        <h2>Salvar Cadastro</h2>
+
+        <form th:action = "@{/SalvarCadastro}" method = "POST" th:object = "${DadosPessoais}">
+            
+            <input type="text" th:field = "*{firstName}" placeholder="first name" >
+
+            <input type="text" th:field = "*{lastName}" placeholder="last name" >
+
+            <input type="text" th:field = "*{telefone1}" placeholder="dadospessoais telefone 1" >
+
+            <input type="text" th:field = "*{telefone2}" placeholder="dadospessoais telefone 2" >
+
+            <input type="text" th:field = "*{email}" placeholder="dadospessoais email" >
+
+            <input type="date" th:field = "*{dataNascimento}" placeholder="dadospessoais dataNascimento" >
+
+            <input type="text" th:field = "*{genero}" placeholder="dadospessoais genero" >
+
+            <input type="text" th:field = "*{tipoServico}" placeholder="dadospessoais tipoServico">
+
+            <button type="submit">Salvar Cadastro</button>
+        </form>
+    </div>
+</body>
+</html>
