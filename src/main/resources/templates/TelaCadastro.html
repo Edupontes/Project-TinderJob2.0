@@ -1,39 +1,166 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link rel="stylesheet" th:href="@{CSS/style.css}"/-->
-    <!--script type="text/javascript" th:src="@{JS/actions.js}"/-->
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--link rel="stylesheet" th:href="@{CSS/styleTelaCadastro_v1.css}"-->
+    <script th:src="@{JS/actions.js}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <title>Tela de Cadastro</title>
 </head>
+
 <body>
-    <div>
+    <!-- Inicio div Container -->
+    <div class="container">
         <h1>Cadastro</h1>
-        <hr>
-        <h2>Salvar Cadastro</h2>
-
-        <form th:action = "@{/SalvarCadastro}" method = "POST" th:object = "${DadosPessoais}">
-            
-            <input type="text" th:field = "*{firstName}" placeholder="first name" >
-
-            <input type="text" th:field = "*{lastName}" placeholder="last name" >
-
-            <input type="text" th:field = "*{telefone1}" placeholder="dadospessoais telefone 1" >
-
-            <input type="text" th:field = "*{telefone2}" placeholder="dadospessoais telefone 2" >
-
-            <input type="text" th:field = "*{email}" placeholder="dadospessoais email" >
-
-            <input type="date" th:field = "*{dataNascimento}" placeholder="dadospessoais dataNascimento" >
-
-            <input type="text" th:field = "*{genero}" placeholder="dadospessoais genero" >
-
-            <input type="text" th:field = "*{tipoServico}" placeholder="dadospessoais tipoServico">
-
-            <button type="submit">Salvar Cadastro</button>
+        <br />
+        <h2>Dados Pessoais</h2>
+        <hr />
+        <!-- Div Forms-dadosPessoais-->
+        <form class="row g-3" th:action="@{/SalvarCadastro}" method="POST">
+            <div class="forms-dadosPessoais" th:object="${DadosPessoais}">
+                <!-- Div Primeiro nome-->
+                <div class="col-md-2">
+                    <label for="inputFirstName" class="form-label">Primeiro Nome</label>
+                    <input type="text" th:field="*{firstName}" placeholder="Primeiro Nome" class="form-control"
+                        id="inputFirstName" required />
+                </div>
+                <!-- /Div Primeiro nome-->
+                <!-- Div Ultimo nome-->
+                <div class="col-md-2">
+                    <label for="inputLastName" class="form-label">Ultimo Nome</label>
+                    <input type="text" th:field="*{lastName}" placeholder="Ultimo nome" class="form-control"
+                        id="inputLastName" required />
+                </div>
+                <!-- /Div Ultimo nome-->
+                <!-- Div Dt Nascimento -->
+                <div class="col-md-2">
+                    <label for="inputDtnascimento" class="form-label">Data Nascimento</label>
+                    <input type="date" th:field="*{dataNascimento}" class="form-control" id="inputDtnascimento"
+                        placeholder="dd-mm-aaaa" required />
+                </div>
+                <!-- /Div Dt Nascimento -->
+                <!-- Div Genero -->
+                <div class="col-md-2">
+                    <label for="inputGenero" class="form-label">Gênero</label>
+                    <select id="inputGenero" class="form-select" th:field="*{genero}" required>
+                        <option value="não informado">Selecione uma opção</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="não declarado">Não deseja informar</option>
+                        <option value="Outra Opção">Outra opção</option>
+                    </select>
+                </div>
+                <!-- /Div Genero -->
+                <!-- Div Aux espaçamento-->
+                <div class="col-md-4"></div>
+                <!-- /Div Aux espaçamento-->
+                <!-- Div Telefone -->
+                <div class="col-md-2">
+                    <label for="inputTelefone1" class="form-label">Telefone 1</label>
+                    <input type="text" th:field="*{telefone1}" class="form-control" id="inputTelefone1"
+                        placeholder="(99)99999-9999" required />
+                </div>
+                <!-- /Div Telefone1 -->
+                <!-- Div Telefone2 -->
+                <div class="col-md-2">
+                    <label for="inputTelefone2" class="form-label">Telefone 2</label>
+                    <input type="text" th:field="*{telefone2}" class="form-control" id="inputTelefone2"
+                        placeholder="(99)99999-9999" required />
+                </div>
+                <!-- /Div Telefone2 -->
+                <!-- Div Email -->
+                <div class="col-md-4">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="inputEmail"
+                        placeholder="email@example.com" required />
+                </div>
+                <!-- /Div Email -->
+                <!-- Div Tipo de Serviço -->
+                <div class="col-md-6">
+                    <label for="inputServico" class="form-label">É profissional? Informe seu serviço.</label>
+                    <select id="inputServico" th:field="*{tipoServico}" class="form-select">
+                        <option value="não informado">
+                            Selecione um tipo de serviço
+                        </option>
+                        <option value="Pedreiro">Pedreiro</option>
+                        <option value="Eletricista">Eletricista</option>
+                        <option value="Encanador">Encanador</option>
+                        <option value="Mecânico">Mecânico</option>
+                    </select>
+                </div>
+                <!-- /Div Tipo de Serviço -->
+                <!--Div Auxiliar espaçamento-->
+                <div></div>
+                <!--/Div Auxiliar espaçamento-->
+            </div>
+            <!--/Div forms-DadosPessoais -->
+            <br />
+            <h2>Endereço</h2>
+            <hr />
+            <!-- Div forms-Endereco -->
+            <div class="forms-Endereco" th:object="${Endereco}">
+                <div class="col-md-2">
+                    <label for="inputCEP" class="form-label">CEP</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" th:field="*{cep}" placeholder="00000-000" />
+                        <button class="btn btn-outline-secondary" type="button">
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div></div>
+                <div class="col-6">
+                    <label for="inputAddress" class="form-label">Av./Rua</label>
+                    <input type="text" class="form-control" th:field="*{rua}" id="inputAddress"
+                        placeholder="R. examplo" />
+                </div>
+                <div class="col-1">
+                    <label for="inputNumeroCasa" class="form-label">Número</label>
+                    <input type="text" class="form-control" th:field="*{numeroCasa}" id="inputNumeroCasa"
+                        placeholder="Nº" />
+                </div>
+                <div class="col-5">
+                    <label for="inputComplemento" class="form-label">Complemento</label>
+                    <input type="text" class="form-control" th:field="*{complemento}" id="inputComplemento" />
+                </div>
+                <div class="col-md-3">
+                    <label for="inputBairro" class="form-label">Bairro</label>
+                    <input type="text" class="form-control" th:field="*{bairro}" id="inputBairro" />
+                </div>
+                <div class="col-md-3">
+                    <label for="inputCidade" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" th:field="*{cidade}" id="inputCidade" />
+                </div>
+                <div class="col-md-3">
+                    <label for="inputEstado" class="form-label">Estado</label>
+                    <select id="inputEstado" th:field="*{estado}" class="form-select">
+                        <option value="não declarado">Choose...</option>
+                        <option value="test">...</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" />
+                        <label class="form-check-label" for="gridCheck">
+                            Accepts Terms & Conditions
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- /Div forms-Endereco -->
+            <div class="col-12" id="div-btn-save">
+                <button type="submit" class="btn btn-outline-success" id="btn-save">
+                    Save
+                </button>
+            </div>
         </form>
+        <br />
     </div>
+    <!-- /Fim div Container-->
 </body>
+
 </html>

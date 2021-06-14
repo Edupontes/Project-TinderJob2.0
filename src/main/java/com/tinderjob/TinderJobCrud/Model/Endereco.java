@@ -18,7 +18,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String CEP;
+    private String cep;
     private String numeroCasa;
     private String rua;
     private String bairro;
@@ -37,10 +37,10 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(int id, String cEP, String numeroCasa, String rua, String bairro, String cidade, String estado,
+    public Endereco(int id, String cep, String numeroCasa, String rua, String bairro, String cidade, String estado,
             String complemento) {
         this.id = id;
-        CEP = cEP;
+        this.cep = cep;
         this.numeroCasa = numeroCasa;
         this.rua = rua;
         this.bairro = bairro;
@@ -57,12 +57,12 @@ public class Endereco {
         this.id = id;
     }
 
-    public String getCEP() {
-        return CEP;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCEP(String cEP) {
-        CEP = cEP;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getNumeroCasa() {

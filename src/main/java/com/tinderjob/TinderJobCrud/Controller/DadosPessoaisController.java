@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.tinderjob.TinderJobCrud.InterfaceService.DadosPessoaisInterfServ;
 import com.tinderjob.TinderJobCrud.Model.DadosPessoais;
+import com.tinderjob.TinderJobCrud.Model.Endereco;
 import com.tinderjob.TinderJobCrud.Repository.DadosPessoaisRepository;
+import com.tinderjob.TinderJobCrud.Repository.EnderecoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class DadosPessoaisController {
 
     @Autowired
     private DadosPessoaisRepository repoDp;
+
+    @Autowired
+    private EnderecoRepository repoEnd;
 
     @GetMapping("/")
     public String index() {
@@ -48,15 +53,25 @@ public class DadosPessoaisController {
         DadosPessoais DadosPessoais = new DadosPessoais();
         model.addAttribute("DadosPessoais", DadosPessoais);
 
+        Endereco endereco = new Endereco();
+        model.addAttribute("Endereco", endereco);
+
         return "TelaCadastro";
     }
 
     @PostMapping("/SalvarCadastro")
-    public String Salvar(@ModelAttribute("DadosPessoais") DadosPessoais dadospessoais) {
+    public String Salvar(@ModelAttribute("DadosPessoais") DadosPessoais dadospessoais, @ModelAttribute("Endereco") Endereco endereco) {
         repoDp.save(dadospessoais);
+        repoEnd.save(endereco);
 
         return "redirect:/listar";
     }
+    // @PostMapping("/SalvarEndereco")
+    // public String Salvar(@ModelAttribute("Endereco") Endereco endereco) {
+    //     repoEnd.save(endereco);
+
+    //     return "redirect:/listar";
+    // }
 
     @GetMapping("/EditarCadastro/{id}")
     public String EditarCadastro(@PathVariable(value = "id") long id, Model model) {
