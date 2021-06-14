@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <!--script type="text/javascript" th:src="@{JS/actions.js}"/-->
     <title>Listagem</title>
 </head>
+
 <body>
     <div class="container mt-4">
         <h2>Listagem</h2>
-        <hr>
+        <hr />
         <table class="table">
             <thead>
                 <tr>
@@ -26,29 +28,35 @@
             </thead>
             <tbody>
                 <tr th:each="dadospessoais : ${dados_pessoais}">
-                    <td th:text = "${dadospessoais.firstName +' '+ dadospessoais.LastName}"></td>
-                    <td th:text = "${dadospessoais.telefone1}"></td>
-                    <td th:text = "${dadospessoais.telefone2}"></td>
-                    <td th:text = "${dadospessoais.email}"></td>
-                    <td th:text = "${dadospessoais.tipoServico}"></td>
+                    <td th:text="${dadospessoais.firstName +' '+ dadospessoais.LastName}"></td>
+                    <td th:text="${dadospessoais.telefone1}"></td>
+                    <td th:text="${dadospessoais.telefone2}"></td>
+                    <td th:text="${dadospessoais.email}"></td>
+                    <td th:text="${dadospessoais.tipoServico}"></td>
                     <td>
-                        <a class="btn btn-outline-warning" th:href="@{/EditarCadastro/{id}(id=${dadospessoais.id})}">EDITAR</a>
+                        <a class="btn btn-outline-warning"
+                            th:href="@{/EditarCadastro/{id}(id=${dadospessoais.id})}">EDITAR</a>
                     </td>
                     <td>
-                        <a class="btn btn-outline-danger" th:href="@{/DeletarCadastro/{id}(id=${dadospessoais.id})}">Remover</a>
+                        <a class="btn btn-outline-danger"
+                            th:href="@{/DeletarCadastro/{id}(id=${dadospessoais.id})}">Remover</a>
                     </td>
-                   
+
                     <!-- <td> <a th:href = "@{/Listagem"></a> </td> -->
                 </tr>
             </tbody>
         </table>
-        <br/>
+        <br />
         <!-- Criar metodo para essas chamadas -->
         <button class="btn btn-outline-secondary">
-            <a style="text-decoration: none !important;" th:href="@{/}">
-                Sair 
-            </a>
+            <div>
+                <a style="text-decoration: none !important" th:href="@{/}"> Sair </a>
+            </div>
         </button>
+        <div style="text-align: center;">
+            <input class="btn btn-info" type="button" onclick="window.print()" value="IMPRIMIR">
+        </div>
     </div>
 </body>
+
 </html>
